@@ -1,0 +1,522 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf8">
+    <title>Editor비교표(2022-05-20)</title>
+    <style type="text/css">
+    <!--
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid #F7931E;
+        }
+
+        body, ul, td, th {
+            font-family: verdana,arial,helvetica,sans-serif;
+            font-size: 100%;
+        }
+
+        tr {
+            background-color: #FFEACD;
+        }
+
+        th {
+            background-color: #FDC689;
+            font-weight: bold;
+            padding : 1;
+        }
+
+        .title {
+            background-color: #FDC689;
+            padding : 1;
+        }
+
+        td {
+            background-color: #FFEACD;
+            padding : 1;
+        }
+
+        pre {
+            font-family: Courier New;
+            font-size : 100%;
+        }
+
+        .red {
+            color: #FF0000;
+        }
+
+        .blue {
+            color: #0000FF;
+        }
+
+		.bold {
+			font-weight: bold;
+		}
+
+        code {
+            font-family: Courier New;
+            font-size : 100%;
+        }
+
+        .fixedHeader {
+            position: sticky;
+            top: 0;
+        }
+    -->
+    </style>
+<script type="text/javascript">
+const LEFT_HEADER_COLUMN_COUNT = 4 ;
+
+if (!String.prototype.endsWith) {
+	String.prototype.endsWith = function(searchString, position) {
+		var subjectString = this.toString();
+		if (typeof position !== 'number' || !isFinite(position) || Math.floor(position) !== position || position > subjectString.length) {
+			position = subjectString.length;
+		}
+		position -= searchString.length;
+		var lastIndex = subjectString.indexOf(searchString, position);
+		return lastIndex !== -1 && lastIndex === position;
+	};
+}
+
+function getExt(tableCell) {
+    var top_cells = document.getElementById("tableID").rows[0].cells ;
+    var cs = 0 ;
+	for(var c = 0; c < top_cells.length; c++)
+		cs += top_cells[c].colSpan ;
+	var newcol = tableCell.col - (cs - top_cells.length) ;
+	return top_cells[newcol].html ;	
+}
+/**/
+
+function tableText(tableCell) {
+	console.log("Cell["+tableCell.row +"," + tableCell.col + "]("+tableCell.unfoldedX+","+tableCell.unfoldedY+"):html[" + tableCell.html.trim()+"]text[" + tableCell.txt+"]HTML("+tableCell.innerHTML+")TEXT("+tableCell.innerText+")");
+
+	if(tableCell.unfoldedX === undefined && tableCell.unfoldedY === undefined) {
+		return ;
+	}
+
+	var table = document.getElementById("tableID");
+	if(tableCell.row == 0) {	// 상단줄 Click
+		console.log("Top Line Click Cell["+tableCell.row +"," + tableCell.col + "]("+tableCell.unfoldedX+","+tableCell.unfoldedY+"):[" + tableCell.html.trim()+"]("+tableCell.innerHTML+")");
+		for (var i = 1; i < table.rows.length; i += 1) {
+			for(var j = 0; j < table.rows[i].cells.length; j += 1) {
+				var cell = table.rows[i].cells[j] ;
+				if(cell.col == tableCell.col) {
+						if(tableCell.unfoldedY) {
+						cell.unfoldedC |= 1 ;
+					}
+				else {
+						cell.unfoldedC &= ~1 ;
+					}
+					
+					if(cell.unfoldedC > 0) {
+						cell.innerHTML = "<center>...</center>";
+					}
+					else {	
+						if(cell.html.indexOf("無") >= 0 || cell.html.indexOf("有") >= 0)
+							cell.innerHTML = "<center>" + cell.html + "</center>" ;
+						else if(cell.html.trim().endsWith(cell.ext))
+							cell.innerHTML = "<center><a href='"+cell.html+ "'>" + cell.html + "</a></center>" ;
+						else
+								cell.innerHTML = "<pre>" + cell.html + "</pre>" ;
+					}
+					break ;
+				}
+			}
+		}
+		tableCell.unfoldedY = tableCell.unfoldedY ? false : true ;
+	} else {	// 좌측 Click
+		console.log("Left Click Cell["+tableCell.row +"," + tableCell.col + "]("+tableCell.unfoldedX+","+tableCell.unfoldedY+") ("+tableCell.rowSpan+","+tableCell.colSpan+")");	
+		for (var i = tableCell.row; i < (tableCell.row + tableCell.rowSpan); i += 1) {
+			//console.log("row = "+ i + ", cellslength:" + table.rows[i].cells.length) ;
+			for(var j = tableCell.col ; j < table.rows[i].cells.length; j += 1) {
+				var cell = table.rows[i].cells[j] ;
+				if(cell.col < LEFT_HEADER_COLUMN_COUNT) continue ;	// Left Title
+				
+				if(tableCell.unfoldedX)
+					cell.unfoldedC |= 2 ;
+				else
+					cell.unfoldedC &= ~2 ;
+				
+				console.log("row,col = "+ i + "," + j + ":" + tableCell.unfoldedX +"," +table.rows[0].cells[1+(cell.col-LEFT_HEADER_COLUMN_COUNT)].unfoldedY+","+cell.unfoldedC) ;
+
+				if(cell.unfoldedC > 0) {
+					cell.innerHTML = "<center>...</center>";
+				}
+				else {
+					if(cell.html.indexOf("無") >= 0 || cell.html.indexOf("有") >= 0)
+						cell.innerHTML = "<center>" + cell.html + "</center>" ;
+					else if(cell.html.trim().endsWith(cell.ext))
+						cell.innerHTML = "<center><a href='"+cell.html+ "'>" + cell.html + "</a></center>" ;
+					else
+						cell.innerHTML = "<pre>" + cell.html + "</pre>" ;
+				}
+			}
+		}
+		tableCell.unfoldedX = tableCell.unfoldedX ? false : true ;
+	}
+}
+
+function init() {
+	var table = document.getElementById("tableID");
+	if (table != null) {	
+		for (var i = table.rows.length-1; i >= 0; i--) {
+			for (var j = table.rows[i].cells.length-1; j >= 0;j--) {  
+				var cell = table.rows[i].cells[j] ;    	
+				if(cell.innerHTML.indexOf("左合") >= 0) {
+					table.rows[i].cells[j-1].colSpan += cell.colSpan ;
+					table.rows[i].deleteCell(j) ;
+				}
+				else if(table.rows[i].cells[j].innerHTML.indexOf("上合") >= 0) {
+					table.rows[i-1].cells[j].rowSpan += cell.rowSpan ;
+					table.rows[i].deleteCell(j) ;
+				} else {
+					var c = 0 ;
+					for(var jj = 0, c = 0; jj < j; jj++)
+						c += table.rows[i].cells[jj].colSpan ;
+					cell.row = i ;
+					cell.col = c ;
+					cell.html = cell.innerHTML.trim() ;
+					//table.rows[i].cells[j].txt = table.rows[i].cells[j].innerText.trim() ;  ... Color넣기
+					cell.onclick = function () { tableText(this); };
+				}
+			}
+		}
+
+		var extension = [] ;
+
+		// 상단줄 Click하면 접고 펼치기 설정
+		for(var j = 0; j < table.rows[0].cells.length; j += 1) {
+			if(table.rows[0].cells[j].innerHTML) {
+				var cell = table.rows[0].cells[j] ;
+				cell.unfoldedY = true ;
+				extension[cell.col] = cell.innerHTML.trim() ;
+			}
+		}
+
+		// 좌측 메뉴 설정
+		for(var i = 1; i < table.rows.length; i += 1) {
+			for(var j = 0; j < table.rows[i].cells.length; j += 1) {
+				var cell = table.rows[i].cells[j] ;
+				if(cell.col >= LEFT_HEADER_COLUMN_COUNT) break ;
+
+				cell.unfoldedX = true ;
+				cell.setAttribute('class', 'title') ;
+			}
+		}
+
+		// 내용물
+		for(var i = 1; i < table.rows.length; i += 1) {
+			for(var j = 0; j < table.rows[i].cells.length; j += 1) {
+				var cell = table.rows[i].cells[j] ;
+				if(cell.unfoldedX || cell.unfoldedY) continue ;
+
+				cell.unfoldedC = 0 ;
+				cell.ext = extension[cell.col] ;
+				if(cell.innerHTML.indexOf("無") >= 0  || cell.html.indexOf("有") >= 0)
+					cell.innerHTML = "<center>" + cell.innerHTML + "</center>" ;
+				else if(cell.innerHTML.trim().endsWith(cell.ext))
+					cell.innerHTML = "<center><a href='"+cell.innerHTML+ "'>" + cell.innerHTML + "</a></center>" ;
+				else
+					cell.innerHTML = "<pre>" + cell.innerHTML + "</pre>" ;
+				}
+		}
+	}
+}
+</script>
+</head>
+<body onload='init();'>
+<h2>■ VS Code, Eclipse, Visual Studio, Notepad++ 비교표</h2>
+
+<table id='tableID' bgcolor=#F7931E border='0' bgcolor=#F7931E cellspacing='1' cellpadding='1'>
+		<tr>
+<th class='fixedHeader'></th><th class='fixedHeader'>左合</th><th class='fixedHeader'>左合</th><th class='fixedHeader'>左合</th>
+<th class='fixedHeader'>VS Code</th>
+<th class='fixedHeader'>Eclipse</th>
+<th class='fixedHeader'>Visual Studio</th>
+<th class='fixedHeader'>Notepad++</th>
+		</tr>
+
+<!-- Command -->
+<tr><td class=title>Commad</td><td>左合<</td><td>左合<</td><td>左合</td>
+<!-- VS Code       --><td>code</td>
+<!-- Eclipse       --><td></td>
+<!-- Visual Studio --><td>.sln</td>
+<!-- Notepad++     --><td>notepad++</td>
+		</tr>
+
+<!-- File/열기 -->
+		<tr><td class=title>File</td><td>열기</td><td>File Open</td><td>左合</td>
+<!-- VS Code       --><td class='bold'>&lt;Ctrl> + O</td>
+<!-- Eclipse       --><td class='red' >&lt;Ctrl> + &lt;Shift> + R</td>
+<!-- Visual Studio --><td class='bold'>&lt;Ctrl> + O</td>
+<!-- Notepad++     --><td class='bold'>&lt;Ctrl> + O</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>Folder Open</td><td>左合</td>
+<!-- VS Code       --><td>&lt;Ctrl> + K , O</td>
+<!-- Eclipse       --><td></td>
+<!-- Visual Studio --><td>&lt;Ctrl> + &lt;Shift> + &lt;Alt> + O</td>
+<!-- Notepad++     --><td>無</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
+<!-- VS Code       --><td>上合</td>
+<!-- Eclipse       --><td>上合</td>
+<!-- Visual Studio --><td>上合</td>
+<!-- Notepad++     --><td>
+매크로 >> 단축키 변경
+주메뉴 >> 작업영역으로 폴더 열기
+</td>
+		</tr>
+
+<!-- File/저장 -->
+		<tr><td class=title>上合</td><td>저장</td><td>File Save</td><td>左合</td>
+<!-- VS Code       --><td class='blue'>&lt;Ctrl> + S</td>
+<!-- Eclipse       --><td class='blue'>&lt;Ctrl> + S</td>
+<!-- Visual Studio --><td class='blue'>&lt;Ctrl> + S</td>
+<!-- Notepad++     --><td class='blue'>&lt;Ctrl> + S</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>Save As</td><td>左合</td>
+<!-- VS Code       --><td></td>
+<!-- Eclipse       --><td></td>
+<!-- Visual Studio --><td></td>
+<!-- Notepad++     --><td>&lt;Ctrl> + &lt;Alt> + S</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>Save All</td><td>左合</td>
+<!-- VS Code       --><td class='red' >&lt;Ctrl> + K , O</td>
+<!-- Eclipse       --><td class='bold'>&lt;Ctrl> + &lt;Shift> + S</td>
+<!-- Visual Studio --><td class='bold'>&lt;Ctrl> + &lt;Shift> + S</td>
+<!-- Notepad++     --><td class='bold'>&lt;Ctrl> + &lt;Shift> + S</td>
+		</tr>
+
+<!-- 창/닫기 -->
+		<tr><td class=title>창</td><td>창 닫기</td><td>左合</td><td>左合</td>
+<!-- VS Code       --><td>
+&lt;Ctrl> + W
+&lt;Ctrl> + F4</td>
+<!-- Eclipse       --><td>
+&lt;Ctrl> + W
+&nbsp;
+</td>
+<!-- Visual Studio --><td>
+&nbsp;
+&lt;Ctrl> + F4
+</td>
+<!-- Notepad++     --><td>
+&lt;Ctrl> + W
+&nbsp;
+</td>
+		</tr>
+
+<!-- 창/모든창 닫기 -->
+		<tr><td class=title>上合</td><td>모든창 닫기</td><td>左合</td><td>左合</td>
+<!-- VS Code       --><td>&lt;Ctrl> + K + W</td>
+<!-- Eclipse       --><td>&lt;Ctrl> + &lt;Shift> + W</td>
+<!-- Visual Studio --><td>&lt;Alt> + W + L</td>
+<!-- Notepad++     --><td>&lt;Ctrl> + &lt;Shift> + W</td>
+		</tr>
+
+<!-- 창/모든창 닫기 -->
+		<tr><td class=title>上合</td><td>창 바꾸기</td><td>左合</td><td>左合</td>
+<!-- VS Code       --><td class='bold'>&lt;Ctrl> + Tab</td>
+<!-- Eclipse       --><td class='red' >&lt;Ctrl> + F6</td>
+<!-- Visual Studio --><td class='bold'>&lt;Ctrl> + Tab</td>
+<!-- Notepad++     --><td class='bold'>&lt;Ctrl> + Tab</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
+<!-- VS Code       --><td>上合</td>
+<!-- Eclipse       --><td>
+&lt;Ctrl> + Tab으로 변경
+Window >> Preferencs
+General >> Keys
+["Next Editor"] 치고
+[Copy Command] 누르고
+Binding: &lt;Ctrl> + Tab 
+</td>
+<!-- Visual Studio --><td>上合</td>
+<!-- Notepad++     --><td>上合</td>
+		</tr>
+		
+<!-- 커서/이동/앞으로 -->
+		<tr><td class=title>커서</td><td>이동</td><td>앞으로</td><td>左合</td>
+<!-- VS Code       --><td>&lt;Alt> + ◀</td>
+<!-- Eclipse       --><td>&lt;Alt> + ◀</td>
+<!-- Visual Studio --><td>&lt;Ctrl> + '-'</td>
+<!-- Notepad++     --><td>無</td>
+<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
+<!-- VS Code       --><td>上合</td>
+<!-- Eclipse       --><td>上合</td>
+<!-- Visual Studio --><td>上合</td>
+<!-- Notepad++     --><td>
+플러그인 >> 플러그인 관리...
+Location Navigate 설치 후
+&lt;Ctrl> + '-'
+</td>
+		</tr>
+
+<!-- 커서/이동/뒤로 -->
+		<tr><td class=title>上合</td><td>上合</td><td>뒤로</td><td>左合</td>
+<!-- VS Code       --><td>&lt;Alt> + ▶</td>
+<!-- Eclipse       --><td>&lt;Alt> + ▶</td>
+<!-- Visual Studio --><td>&lt;Ctrl> + &lt;Shift> + '-'</td>
+<!-- Notepad++     --><td>無</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
+<!-- VS Code       --><td>上合</td>
+<!-- Eclipse       --><td>上合</td>
+<!-- Visual Studio --><td>上合</td>
+<!-- Notepad++     --><td>
+플러그인 >> 플러그인 관리...
+Location Navigate 설치 후
+&lt;Ctrl> + &lt;Shift> + '-'
+</td>
+		</tr>
+
+<!-- 커서/이동/줄번호 -->
+		<tr><td class=title>上合</td><td>上合</td><td>Goto Line</td><td>左合</td>
+<!-- VS Code       --><td class='bold'>&lt;Ctrl> + G</td>
+<!-- Eclipse       --><td class='red' >&lt;Ctrl> + L</td>
+<!-- Visual Studio --><td class='bold'>&lt;Ctrl> + G</td>
+<!-- Notepad++     --><td class='bold'>&lt;Ctrl> + G</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
+<!-- VS Code       --><td>上合</td>
+<!-- Eclipse       --><td>
+&lt;Ctrl> + G으로 변경
+Window >> Preferencs
+General >> Keys
+["Go to Line"] 치고
+[Copy Command] 누르고
+Binding: &lt;Ctrl> + G 
+</td>
+<!-- Visual Studio --><td>上合</td>
+<!-- Notepad++     --><td>上合</td>
+		</tr>
+
+<!-- Text/찾기 -->
+		<tr><td class=title>Text</td><td>찾기</td><td>현재창에서</td><td>左合</td>
+<!-- VS Code       --><td class='blue'>&lt;Ctrl> + F</td>
+<!-- Eclipse       --><td class='blue'>&lt;Ctrl> + F</td>
+<!-- Visual Studio --><td class='blue'>&lt;Ctrl> + F</td>
+<!-- Notepad++     --><td class='blue'>&lt;Ctrl> + F</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>다음 찾기</td><td>左合</td>
+<!-- VS Code       --><td>
+Enter ... Enter, ESC
+ESC, F3 ... F3
+</td>
+<!-- Eclipse       --><td>
+Enter ... Enter, ESC
+&nbsp;
+</td>
+<!-- Visual Studio --><td>
+Enter ... Enter, ESC
+ESC, F3 ... F3
+</td>
+<!-- Notepad++     --><td>
+Enter ... Enter, ESC
+ESC, F3 ... F3
+</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>파일에서</td><td>左合</td>
+<!-- VS Code       --><td class='bold'>&lt;Ctrl> + &lt;Shift> + F</td>
+<!-- Eclipse       --><td class='red' >&lt;Ctrl> + H</td>
+<!-- Visual Studio --><td class='bold'>&lt;Ctrl> + &lt;Shift> + F</td>
+<!-- Notepad++     --><td class='bold'>&lt;Ctrl> + &lt;Shift> + F</td>
+		</tr>
+
+<!-- Text/바꾸기 -->
+		<tr><td class=title>上合</td><td>바꾸기</td><td>현재창에서</td><td>左合</td>
+<!-- VS Code       --><td class='red'>&lt;Ctrl> + H</td>
+<!-- Eclipse       --><td class=''   >無</td>
+<!-- Visual Studio --><td class='red'>&lt;Ctrl> + H</td>
+<!-- Notepad++     --><td class='red'>&lt;Ctrl> + H</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>파일에서</td><td>左合</td>
+<!-- VS Code       --><td>&lt;Ctrl> + &lt;Shift> + H</td>
+<!-- Eclipse       --><td>無</td>
+<!-- Visual Studio --><td>&lt;Ctrl> + &lt;Shift> + H</td>
+<!-- Notepad++     --><td>無</td>
+		</tr>
+
+<!-- 함수/정의로 이동-->
+		<tr><td class=title>함수</td><td>정의로 이동</td><td>左合</td><td>左合</td>
+<!-- VS Code       --><td>F12</td>
+<!-- Eclipse       --><td>F3</td>
+<!-- Visual Studio --><td>F12</td>
+<!-- Notepad++     --><td>無</td>
+		</tr>
+
+<!-- 함수/참조들 찾기-->
+		<tr><td class=title>上合</td><td>참조들 찾기</td><td>左合</td><td>左合</td>
+<!-- VS Code       --><td>&lt;Alt> + &lt;Shift> + F12</td>
+<!-- Eclipse       --><td>&lt;Ctrl> + &lt;Alt> + H</td>
+<!-- Visual Studio --><td>無</td>
+<!-- Notepad++     --><td>無</td>
+		</tr>
+
+<!-- 선택/열모드 -->
+		<tr><td class=title>선택</td><td>열모드</td><td>시작</td><td>左合</td>
+<!-- VS Code       --><td>&lt;Ctrl> + &lt;Alt> + ▲|▼</td>
+<!-- Eclipse       --><td>&lt;Alt> + &lt;Shift> + A</td>
+<!-- Visual Studio --><td>&lt;Alt> + &lt;Shift> + ▲|▼</td>
+<!-- Notepad++     --><td>&lt;Alt> + &lt;Shift> + ▲|▼</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>선택</td><td>左合</td>
+<!-- VS Code       --><td>&lt;Ctrl> + &lt;Alt> + ▲|▼</td>
+<!-- Eclipse       --><td>&lt;Shift> + ▲|▼</td>
+<!-- Visual Studio --><td>&lt;Alt> + &lt;Shift> + ▲|▼</td>
+<!-- Notepad++     --><td>&lt;Alt> + &lt;Shift> + ▲|▼</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>해제</td><td>左合</td>
+<!-- VS Code       --><td>ESC</td>
+<!-- Eclipse       --><td>&lt;Alt> + &lt;Shift> + A</td>
+<!-- Visual Studio --><td>ESC</td>
+<!-- Notepad++     --><td>▲|▼|◀|▶</td>
+		</tr>
+
+<!-- 선택/Box -->
+		<tr><td class=title>上合</td><td>Box</td><td>시작</td><td>左合</td>
+<!-- VS Code       --><td>&lt;Ctrl>+&lt;Alt>+&lt;Shift> + ▲|▼|◀|▶</td>
+<!-- Eclipse       --><td>&lt;Alt> + &lt;Shift> + A</td>
+<!-- Visual Studio --><td>&lt;Alt> + &lt;Shift> + ▲|▼|◀|▶</td>
+<!-- Notepad++     --><td>&lt;Alt> + &lt;Shift> + ▲|▼|◀|▶</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>선택</td><td>左合</td>
+<!-- VS Code       --><td>&lt;Ctrl>+&lt;Alt>+&lt;Shift> + ▲|▼|◀|▶</td>
+<!-- Eclipse       --><td>&lt;Shift> + ▲|▼|◀|▶</td>
+<!-- Visual Studio --><td>&lt;Alt> + &lt;Shift> + ▲|▼|◀|▶</td>
+<!-- Notepad++     --><td>&lt;Alt> + &lt;Shift> + ▲|▼|◀|▶</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>해제</td><td>左合</td>
+<!-- VS Code       --><td>ESC</td>
+<!-- Eclipse       --><td>&lt;Alt> + &lt;Shift> + A</td>
+<!-- Visual Studio --><td>ESC</td>
+<!-- Notepad++     --><td>▲|▼|◀|▶</td>
+		</tr>
+
+<!-- 기타/Full Screen -->
+		<tr><td class=title>기타</td><td>FullScreen</td><td>左合</td><td>左合</td>
+<!-- VS Code       --><td>F11</td>
+<!-- Eclipse       --><td>無</td>
+<!-- Visual Studio --><td>&lt;Alt> + &lt;Shift> + Enter</td>
+<!-- Notepad++     --><td>F11</td>
+		</tr>
+
+<!-- 기타/Terminal(console) -->
+		<tr><td class=title>上合</td><td>Terminal(console)</td><td>左合</td><td>左合</td>
+<!-- VS Code       --><td>&lt;Ctrl> + '`'</td>
+<!-- Eclipse       --><td></td>
+<!-- Visual Studio --><td></td>
+<!-- Notepad++     --><td>
+플러그인 >> 플러그인 관리...
+NppExec 설치 후
+&lt;Ctrl> + '`'
+</td>
+		</tr>
+
+</table>
+<br/>
+</body>
+</html>
