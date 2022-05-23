@@ -12,7 +12,7 @@ insert_final_newline = true
 
 # Matches multiple files with brace expansion notation
 # Set default charset
-[*.{js,ts,c,h,cpp,cs,html,md}]
+[*.{js,ts,c,h,cpp,java,cs,html,md}]
 charset = utf-8
 indent_style = tab
 indent_size = 4

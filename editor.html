@@ -249,8 +249,8 @@ function init() {
 <!-- Notepad++     --><td>notepad++</td>
 		</tr>
 
-<!-- 설정/TAB크기 -->
-		<tr><td class=title>설정</td><td>Tab Size</td><td>左合<</td><td>左合</td>
+<!-- 설정/Tab(Indent) Size -->
+		<tr><td class=title>설정</td><td>Tab(Indent) Size</td><td>左合<</td><td>左合</td>
 <!-- VS Code       --><td>
 파일 >> 기본 설정 >> 설정
 (&lt;Ctrl> + ',')
@@ -269,6 +269,16 @@ Insert spaces for tabs
 텍스트편집기>>언어별>>탭
 텍스트편집기>>고급>>적응형서식사용
 </td>
+<!-- Notepad++     --><td>
+설정 >> 환경설정
+언어메뉴>>탭설정
+</td>
+		</tr>
+<!-- 설정/Indent변경 -->
+		<tr><td class=title>上合</td><td>Indent변경</td><td>左合</td><td>左合</td>
+<!-- VS Code       --><td class='blue'>하단상태Bar에서 Click</td>
+<!-- Eclipse       --><td></td>
+<!-- Visual Studio --><td class='blue'>하단상태Bar에서 Click</td>
 <!-- Notepad++     --><td></td>
 		</tr>
 
@@ -288,11 +298,13 @@ Show whitespace characters
 도구 >> 옵션
 텍스트편집기>>일반>>표시>>공백보기
 </td>
-<!-- Notepad++     --><td></td>
+<!-- Notepad++     --><td>
+보기>>기호보기>>공백과탭 표시
+</td>
 		</tr>
 
-<!-- 설정/Charset -->
-		<tr><td class=title>上合</td><td>Charset</td><td>左合<</td><td>左合</td>
+<!-- 설정/Charset/설정 -->
+		<tr><td class=title>上合</td><td>Charset</td><td>설정</td><td>左合</td>
 <!-- VS Code       --><td>
 파일 >> 기본 설정 >> 설정
 (&lt;Ctrl> + ',')
@@ -307,10 +319,19 @@ Text file encoding
 .editorconfig
 <a href='https://editorconfig.org/'>https://editorconfig.org/</a>
 </td>
-<!-- Notepad++     --><td></td>
+<!-- Notepad++     --><td>인코딩 >> ...</td>
 		</tr>
-<!-- 설정/EndOfLine -->
-		<tr><td class=title>上合</td><td>EndOfLine</td><td>左合<</td><td>左合</td>
+
+<!-- 설정/Charset/변환 -->
+		<tr><td class=title>上合</td><td>上合</td><td>변환</td><td>左合</td>
+<!-- VS Code       --><td class='blue'>하단상태Bar에서 Click</td>
+<!-- Eclipse       --><td></td>
+<!-- Visual Studio --><td></td>
+<!-- Notepad++     --><td class='blue'>인코딩 >> ...</td>
+		</tr>
+
+<!-- 설정/EndOfLine/설정 -->
+		<tr><td class=title>上合</td><td>EndOfLine</td><td>설정</td><td>左合</td>
 <!-- VS Code       --><td>
 파일 >> 기본 설정 >> 설정
 (&lt;Ctrl> + ',')
@@ -328,12 +349,20 @@ New text file line delimiter
 <!-- Notepad++     --><td></td>
 		</tr>
 
+<!-- 설정/EndOfLine/변경 -->
+		<tr><td class=title>上合</td><td>上合</td><td>변경</td><td>左合</td>
+<!-- VS Code       --><td class='blue'>하단상태Bar에서 Click</td>
+<!-- Eclipse       --><td class='red' >File >> Convert Line Delimiters To</td>
+<!-- Visual Studio --><td class='blue'>하단상태Bar에서 Click</td>
+<!-- Notepad++     --><td class='blue'>하단상태Bar에서 Right Click</td>
+		</tr>
+
 <!-- File/열기 -->
 		<tr><td class=title>File</td><td>열기</td><td>File Open</td><td>左合</td>
-<!-- VS Code       --><td class='bold'>&lt;Ctrl> + O</td>
+<!-- VS Code       --><td class='blue'>&lt;Ctrl> + O</td>
 <!-- Eclipse       --><td class='red' >&lt;Ctrl> + &lt;Shift> + R</td>
-<!-- Visual Studio --><td class='bold'>&lt;Ctrl> + O</td>
-<!-- Notepad++     --><td class='bold'>&lt;Ctrl> + O</td>
+<!-- Visual Studio --><td class='blue'>&lt;Ctrl> + O</td>
+<!-- Notepad++     --><td class='blue'>&lt;Ctrl> + O</td>
 		</tr>
 		<tr><td class=title>上合</td><td>上合</td><td>Folder Open</td><td>左合</td>
 <!-- VS Code       --><td>&lt;Ctrl> + K , O</td>
@@ -374,10 +403,10 @@ New text file line delimiter
 <!-- 창/닫기 -->
 		<tr><td class=title>창</td><td>창 닫기</td><td>左合</td><td>左合</td>
 <!-- VS Code       --><td>
-&lt;Ctrl> + W
+<span class='blue'>&lt;Ctrl> + W</span>
 &lt;Ctrl> + F4</td>
 <!-- Eclipse       --><td>
-&lt;Ctrl> + W
+<span class='blue'>&lt;Ctrl> + W</span>
 &nbsp;
 </td>
 <!-- Visual Studio --><td>
@@ -385,7 +414,7 @@ New text file line delimiter
 &lt;Ctrl> + F4
 </td>
 <!-- Notepad++     --><td>
-&lt;Ctrl> + W
+<span class='blue'>&lt;Ctrl> + W</span>
 &nbsp;
 </td>
 		</tr>
@@ -398,12 +427,12 @@ New text file line delimiter
 <!-- Notepad++     --><td>&lt;Ctrl> + &lt;Shift> + W</td>
 		</tr>
 
-<!-- 창/모든창 닫기 -->
+<!-- 창/바꾸기 -->
 		<tr><td class=title>上合</td><td>창 바꾸기</td><td>左合</td><td>左合</td>
-<!-- VS Code       --><td class='bold'>&lt;Ctrl> + Tab</td>
+<!-- VS Code       --><td class='blue'>&lt;Ctrl> + Tab</td>
 <!-- Eclipse       --><td class='red' >&lt;Ctrl> + F6</td>
-<!-- Visual Studio --><td class='bold'>&lt;Ctrl> + Tab</td>
-<!-- Notepad++     --><td class='bold'>&lt;Ctrl> + Tab</td>
+<!-- Visual Studio --><td class='blue'>&lt;Ctrl> + Tab</td>
+<!-- Notepad++     --><td class='blue'>&lt;Ctrl> + Tab</td>
 		</tr>
 		<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
 <!-- VS Code       --><td>上合</td>
@@ -456,10 +485,10 @@ Location Navigate 설치 후
 
 <!-- 커서/이동/줄번호 -->
 		<tr><td class=title>上合</td><td>上合</td><td>Goto Line</td><td>左合</td>
-<!-- VS Code       --><td class='bold'>&lt;Ctrl> + G</td>
+<!-- VS Code       --><td class='blue'>&lt;Ctrl> + G</td>
 <!-- Eclipse       --><td class='red' >&lt;Ctrl> + L</td>
-<!-- Visual Studio --><td class='bold'>&lt;Ctrl> + G</td>
-<!-- Notepad++     --><td class='bold'>&lt;Ctrl> + G</td>
+<!-- Visual Studio --><td class='blue'>&lt;Ctrl> + G</td>
+<!-- Notepad++     --><td class='blue'>&lt;Ctrl> + G</td>
 		</tr>
 		<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
 <!-- VS Code       --><td>上合</td>
@@ -475,27 +504,39 @@ Binding: &lt;Ctrl> + G
 <!-- Notepad++     --><td>上合</td>
 		</tr>
 
+<!-- 커서/다중커서 -->
+		<tr><td class=title>上合</td><td>다중커서</td><td>左合</td><td>左合</td>
+<!-- VS Code       --><td class='red'>&lt;Ctrl> + Click</td>
+<!-- Eclipse       --><td class='bold'></td>
+<!-- Visual Studio --><td class='bold'>&lt;Ctrl> + &lt;Alt> + Click</td>
+<!-- Notepad++     --><td class='bold'>
+<span class='red'>&lt;Ctrl> + Click</span>
+설정>>환경설정
+편집>>다중편집기능
+</td>
+		</tr>
+
 <!-- Line/위로 이동-->
 		<tr><td class=title>Line</td><td>위로 이동</td><td>左合</td><td>左合</td>
-<!-- VS Code       --><td>&lt;Alt> + ▲</td>
-<!-- Eclipse       --><td>&lt;Alt> + ▲</td>
-<!-- Visual Studio --><td></td>
-<!-- Notepad++     --><td></td>
+<!-- VS Code       --><td class='blue'>&lt;Alt> + ▲</td>
+<!-- Eclipse       --><td class='blue'>&lt;Alt> + ▲</td>
+<!-- Visual Studio --><td class='blue'>&lt;Alt> + ▲</td>
+<!-- Notepad++     --><td>&lt;Ctrl> + &lt;Shift> + ▲</td>
 		</tr>
 
 <!-- Line/아래로 이동-->
 		<tr><td class=title>上合</td><td>아래로 이동</td><td>左合</td><td>左合</td>
-<!-- VS Code       --><td>&lt;Alt> + ▼</td>
-<!-- Eclipse       --><td>&lt;Alt> + ▼</td>
-<!-- Visual Studio --><td></td>
-<!-- Notepad++     --><td></td>
+<!-- VS Code       --><td class='blue'>&lt;Alt> + ▼</td>
+<!-- Eclipse       --><td class='blue'>&lt;Alt> + ▼</td>
+<!-- Visual Studio --><td class='blue'>&lt;Alt> + ▼</td>
+<!-- Notepad++     --><td>&lt;Ctrl> + &lt;Shift> + ▼</td>
 		</tr>
 
 <!-- Line/잘라내기 -->
 		<tr><td class=title>上合</td><td>잘라내기</td><td>左合</td><td>左合</td>
 <!-- VS Code       --><td>&lt;Ctrl> + X [No Selected]</td>
 <!-- Eclipse       --><td></td>
-<!-- Visual Studio --><td></td>
+<!-- Visual Studio --><td>&lt;Ctrl> + X [No Selected]</td>
 <!-- Notepad++     --><td></td>
 		</tr>
 
@@ -503,7 +544,7 @@ Binding: &lt;Ctrl> + G
 		<tr><td class=title>上合</td><td>복사하기</td><td>左合</td><td>左合</td>
 <!-- VS Code       --><td>&lt;Ctrl> + C [No Selected]</td>
 <!-- Eclipse       --><td></td>
-<!-- Visual Studio --><td></td>
+<!-- Visual Studio --><td>&lt;Ctrl> + C [No Selected]</td>
 <!-- Notepad++     --><td></td>
 		</tr>
 
@@ -511,24 +552,24 @@ Binding: &lt;Ctrl> + G
 		<tr><td class=title>上合</td><td>붙여넣기</td><td>左合</td><td>左合</td>
 <!-- VS Code       --><td>&lt;Ctrl> + V [No Selected]</td>
 <!-- Eclipse       --><td></td>
-<!-- Visual Studio --><td></td>
+<!-- Visual Studio --><td>&lt;Ctrl> + V [No Selected]</td>
 <!-- Notepad++     --><td></td>
 		</tr>
 
 <!-- Line/삭제하기 -->
-		<tr><td class=title>上合</td><td>붙여넣기</td><td>左合</td><td>左合</td>
+		<tr><td class=title>上合</td><td>삭제하기</td><td>左合</td><td>左合</td>
 <!-- VS Code       --><td></td>
 <!-- Eclipse       --><td>&lt;Ctrl> + D</td>
 <!-- Visual Studio --><td></td>
-<!-- Notepad++     --><td></td>
+<!-- Notepad++     --><td>&lt;Ctrl> + L</td>
 		</tr>
 
 <!-- Line/복제하기 -->
 		<tr><td class=title>上合</td><td>복제하기</td><td>左合</td><td>左合</td>
 <!-- VS Code       --><td></td>
-<!-- Eclipse       --><td>&lt;Ctrl> + &lt;Altl> + ▲|▼</td>
+<!-- Eclipse       --><td>&lt;Ctrl> + &lt;Alt> + ▲|▼</td>
 <!-- Visual Studio --><td></td>
-<!-- Notepad++     --><td></td>
+<!-- Notepad++     --><td>&lt;Ctrl> + D</td>
 		</tr>
 
 <!-- Text/찾기 -->
@@ -580,8 +621,14 @@ ESC, F3 ... F3
 <!-- 함수/정의로 이동-->
 		<tr><td class=title>함수</td><td>정의로 이동</td><td>左合</td><td>左合</td>
 <!-- VS Code       --><td>F12</td>
-<!-- Eclipse       --><td>F3</td>
-<!-- Visual Studio --><td>F12</td>
+<!-- Eclipse       --><td>
+F3
+<span class='red'>&lt;Ctrl> + Click</span>
+</td>
+<!-- Visual Studio --><td>
+F12
+<span class='red'>&lt;Ctrl> + Click</span>
+</td>
 <!-- Notepad++     --><td>無</td>
 		</tr>
 
@@ -650,19 +697,31 @@ ESC, F3 ... F3
 <!-- 선택/열모드 -->
 		<tr><td class=title>선택</td><td>열모드</td><td>시작</td><td>左合</td>
 <!-- VS Code       --><td>&lt;Ctrl> + &lt;Alt> + ▲|▼</td>
-<!-- Eclipse       --><td>&lt;Alt> + &lt;Shift> + A</td>
+<!-- Eclipse       --><td class=blue>&lt;Alt> + &lt;Shift> + A</td>
 <!-- Visual Studio --><td>&lt;Alt> + &lt;Shift> + ▲|▼</td>
 <!-- Notepad++     --><td>&lt;Alt> + &lt;Shift> + ▲|▼</td>
 		</tr>
 		<tr><td class=title>上合</td><td>上合</td><td>선택</td><td>左合</td>
-<!-- VS Code       --><td>&lt;Ctrl> + &lt;Alt> + ▲|▼</td>
-<!-- Eclipse       --><td>&lt;Shift> + ▲|▼</td>
-<!-- Visual Studio --><td>&lt;Alt> + &lt;Shift> + ▲|▼</td>
-<!-- Notepad++     --><td>&lt;Alt> + &lt;Shift> + ▲|▼</td>
+<!-- VS Code       --><td>
+&lt;Ctrl> + &lt;Alt> + ▲|▼
+<span class=blue>&lt;Alt> + Drag</span>
+</td>
+<!-- Eclipse       --><td>
+&lt;Shift> + ▲|▼
+Drag
+</td>
+<!-- Visual Studio --><td>
+&lt;Alt> + &lt;Shift> + ▲|▼
+<span class=blue>&lt;Alt> + Drag</span>
+</td>
+<!-- Notepad++     --><td>
+&lt;Alt> + &lt;Shift> + ▲|▼
+<span class=blue>&lt;Alt> + Drag</span>
+</td>
 		</tr>
 		<tr><td class=title>上合</td><td>上合</td><td>해제</td><td>左合</td>
 <!-- VS Code       --><td>ESC</td>
-<!-- Eclipse       --><td>&lt;Alt> + &lt;Shift> + A</td>
+<!-- Eclipse       --><td class=blue>&lt;Alt> + &lt;Shift> + A</td>
 <!-- Visual Studio --><td>ESC</td>
 <!-- Notepad++     --><td>▲|▼|◀|▶</td>
 		</tr>
@@ -670,19 +729,31 @@ ESC, F3 ... F3
 <!-- 선택/Box -->
 		<tr><td class=title>上合</td><td>Box</td><td>시작</td><td>左合</td>
 <!-- VS Code       --><td>&lt;Ctrl>+&lt;Alt>+&lt;Shift> + ▲|▼|◀|▶</td>
-<!-- Eclipse       --><td>&lt;Alt> + &lt;Shift> + A</td>
+<!-- Eclipse       --><td class=blue>&lt;Alt> + &lt;Shift> + A</td>
 <!-- Visual Studio --><td>&lt;Alt> + &lt;Shift> + ▲|▼|◀|▶</td>
 <!-- Notepad++     --><td>&lt;Alt> + &lt;Shift> + ▲|▼|◀|▶</td>
 		</tr>
 		<tr><td class=title>上合</td><td>上合</td><td>선택</td><td>左合</td>
-<!-- VS Code       --><td>&lt;Ctrl>+&lt;Alt>+&lt;Shift> + ▲|▼|◀|▶</td>
-<!-- Eclipse       --><td>&lt;Shift> + ▲|▼|◀|▶</td>
-<!-- Visual Studio --><td>&lt;Alt> + &lt;Shift> + ▲|▼|◀|▶</td>
-<!-- Notepad++     --><td>&lt;Alt> + &lt;Shift> + ▲|▼|◀|▶</td>
+<!-- VS Code       --><td>
+&lt;Ctrl>+&lt;Alt>+&lt;Shift> + ▲|▼|◀|▶
+<span class=blue>&lt;Alt> + Drag</span>
+</td>
+<!-- Eclipse       --><td>
+&lt;Shift> + ▲|▼|◀|▶
+Drag
+</td>
+<!-- Visual Studio --><td>
+&lt;Alt> + &lt;Shift> + ▲|▼|◀|▶
+<span class=blue>&lt;Alt> + Drag</span>
+</td>
+<!-- Notepad++     --><td>
+&lt;Alt> + &lt;Shift> + ▲|▼
+<span class=blue>&lt;Alt> + Drag</span>
+</td>
 		</tr>
 		<tr><td class=title>上合</td><td>上合</td><td>해제</td><td>左合</td>
 <!-- VS Code       --><td>ESC</td>
-<!-- Eclipse       --><td>&lt;Alt> + &lt;Shift> + A</td>
+<!-- Eclipse       --><td class=blue>&lt;Alt> + &lt;Shift> + A</td>
 <!-- Visual Studio --><td>ESC</td>
 <!-- Notepad++     --><td>▲|▼|◀|▶</td>
 		</tr>
@@ -695,12 +766,19 @@ ESC, F3 ... F3
 <!-- Notepad++     --><td></td>
 		</tr>
 		<tr><td class=title>上合</td><td>여러줄(Lines)</td><td>左合</td><td>左合</td>
-<!-- VS Code       --><td>Home, &lt;Shfit> + ▲|▼</td>
-<!-- Eclipse       --><td></td>
-<!-- Visual Studio --><td></td>
+<!-- VS Code       --><td class='blue'>Home, &lt;Shfit> + ▲|▼</td>
+<!-- Eclipse       --><td class='blue'>Home, &lt;Shfit> + ▲|▼</td>
+<!-- Visual Studio --><td class='blue'>Home, &lt;Shfit> + ▲|▼</td>
+<!-- Notepad++     --><td class='blue'>Home, &lt;Shfit> + ▲|▼</td>
+		</tr>
+<tr><td class=title>上合</td><td>변수 다중선택</td><td>左合</td><td>左合</td>
+<!-- VS Code       --><td></td>
+<!-- Eclipse       --><td>선택, &lt;Alt>+&lt;Shift> + R</td>
+<!-- Visual Studio --><td>
+선택, &lt;Alt>+&lt;Shift> + '>'...'>'
+</td>
 <!-- Notepad++     --><td></td>
 		</tr>
-
 <!-- 선택/줄(Line) -->
 		<tr><td class=title>주석</td><td>Line</td><td>주석</td><td>左合</td>
 <!-- VS Code       --><td class=blue>
@@ -748,11 +826,11 @@ ESC, F3 ... F3
 <!-- 기타/Font크기 -->
 		<tr><td class=title>기타</td><td>Font크기(Zoom)</td><td>左合</td><td>左合</td>
 <!-- VS Code       --><td>
-&lt;Ctrl> + '+'|'-'(Main)
+<span class='blue'>&lt;Ctrl> + '+'|'-'</span>
 &nbsp;
 </td>
 <!-- Eclipse       --><td>
-&lt;Ctrl> + '+'|'-'(Main)
+<span class='blue'>&lt;Ctrl> + '+'|'-'(Main)</span>
 &lt;Ctrl> + &lt;Shift> + '+'|'-'(Num)
 </td>
 <!-- Visual Studio --><td>
@@ -760,7 +838,7 @@ ESC, F3 ... F3
 &lt;Ctrl> + &lt;Shift> + '<'|'>'
 </td>
 <!-- Notepad++     --><td>
-&lt;Ctrl> + '+'|'-'(Num)
+<span class='blue'>&lt;Ctrl>&lt;Ctrl> + '+'|'-'(Num)</span>
 &nbsp;
 </td>
 
