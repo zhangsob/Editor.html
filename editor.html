@@ -1,71 +1,71 @@
 <html>
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf8">
-<title>Editor비교표(2022-05-24)</title>
+<title>Editor비교표(2024-03-16)</title>
 <style type="text/css">
-    <!--
-        table {
-            border-collapse: collapse;
-        }
+	<!--
+		table {
+			border-collapse: collapse;
+		}
 
-        table, td, th {
-            border: 1px solid #F7931E;
-        }
+		table, td, th {
+			border: 1px solid #F7931E;
+		}
 
-        body, ul, td, th {
-            font-family: verdana,arial,helvetica,sans-serif;
-            font-size: 100%;
-        }
+		body, ul, td, th {
+			font-family: verdana,arial,helvetica,sans-serif;
+			font-size: 100%;
+		}
 
-        tr {
-            background-color: #FFEACD;
-        }
+		tr {
+			background-color: #FFEACD;
+		}
 
-        th {
-            background-color: #FDC689;
-            font-weight: bold;
-            padding : 1;
-        }
-
-        .title {
-            background-color: #FDC689;
-            padding : 1;
-        }
-
-        td {
-            background-color: #FFEACD;
-            padding : 1;
-        }
-
-        pre {
-            font-family: Courier New;
-            font-size : 100%;
-        }
-
-        .red {
-            color: #FF0000;
+		th {
+			background-color: #FDC689;
 			font-weight: bold;
-        }
+			padding : 1;
+		}
 
-        .blue {
-            color: #0000FF;
+		.title {
+			background-color: #FDC689;
+			padding : 1;
+		}
+
+		td {
+			background-color: #FFEACD;
+			padding : 1;
+		}
+
+		pre {
+			font-family: Courier New;
+			font-size : 100%;
+		}
+
+		.red {
+			color: #FF0000;
 			font-weight: bold;
-        }
+		}
+
+		.blue {
+			color: #0000FF;
+			font-weight: bold;
+		}
 
 		.bold {
 			font-weight: bold;
 		}
 
-        code {
-            font-family: Courier New;
-            font-size : 100%;
-        }
+		code {
+			font-family: Courier New;
+			font-size : 100%;
+		}
 
-        .fixedHeader {
-            position: sticky;
-            top: 0;
-        }
-    -->
+		.fixedHeader {
+			position: sticky;
+			top: 0;
+		}
+	-->
 </style>
 <script type="text/javascript">
 const LEFT_HEADER_COLUMN_COUNT = 4 ;
@@ -83,8 +83,8 @@ if (!String.prototype.endsWith) {
 }
 
 function getExt(tableCell) {
-    var top_cells = document.getElementById("tableID").rows[0].cells ;
-    var cs = 0 ;
+	var top_cells = document.getElementById("tableID").rows[0].cells ;
+	var cs = 0 ;
 	for(var c = 0; c < top_cells.length; c++)
 		cs += top_cells[c].colSpan ;
 	var newcol = tableCell.col - (cs - top_cells.length) ;
@@ -240,6 +240,7 @@ function init() {
 <th class='fixedHeader'>Eclipse</th>
 <th class='fixedHeader'>Visual Studio</th>
 <th class='fixedHeader'>Notepad++</th>
+<th class='fixedHeader'>IntelliJ</th>
 		</tr>
 
 <!-- Command -->
@@ -248,6 +249,7 @@ function init() {
 <!-- Eclipse       --><td></td>
 <!-- Visual Studio --><td>.sln</td>
 <!-- Notepad++     --><td>notepad++</td>
+<!-- IntelliJ      --><td></td>
 		</tr>
 
 <!-- 설정/Tab(Indent) Size -->
@@ -274,6 +276,10 @@ Insert spaces for tabs
 설정 >> 환경설정
 언어메뉴>>탭설정
 </td>
+<!-- IntelliJ      --><td>
+File >> Settings
+Editor >> Code Style
+</td>
 		</tr>
 
 <!-- 설정/Indent변경 -->
@@ -282,6 +288,7 @@ Insert spaces for tabs
 <!-- Eclipse       --><td></td>
 <!-- Visual Studio --><td class='blue'>하단상태Bar에서 Click</td>
 <!-- Notepad++     --><td></td>
+<!-- IntelliJ      --><td class='blue'>하단상태Bar에서 Click</td>
 		</tr>
 
 <!-- 설정/WhiteSpace보기 -->
@@ -303,6 +310,11 @@ Show whitespace characters
 <!-- Notepad++     --><td>
 보기>>기호보기>>공백과탭 표시
 </td>
+<!-- IntelliJ      --><td>
+File >> Settings
+Editor>>General>>Appearance(모양)
+Show whitespaces(공백 표시)
+</td>
 		</tr>
 
 <!-- 설정/Charset/설정 -->
@@ -321,7 +333,13 @@ Text file encoding
 .editorconfig
 <a href='https://editorconfig.org/'>https://editorconfig.org/</a>
 </td>
-<!-- Notepad++     --><td>인코딩 >> ...</td>
+<!-- Notepad++     --><td>
+인코딩 >> ...
+</td>
+<!-- IntelliJ      --><td>
+File >> Settings
+Editor >> File Encodings
+</td>
 		</tr>
 
 <!-- 설정/Charset/변환 -->
@@ -330,6 +348,7 @@ Text file encoding
 <!-- Eclipse       --><td></td>
 <!-- Visual Studio --><td></td>
 <!-- Notepad++     --><td class='blue'>인코딩 >> ...</td>
+<!-- IntelliJ      --><td class='blue'>하단상태Bar에서 Click</td>
 		</tr>
 
 <!-- 설정/EndOfLine/설정 -->
@@ -349,6 +368,10 @@ New text file line delimiter
 <a href='https://editorconfig.org/'>https://editorconfig.org/</a>
 </td>
 <!-- Notepad++     --><td></td>
+<!-- IntelliJ      --><td>
+File >> Settings
+Editor >> Code Style
+</td>
 		</tr>
 
 <!-- 설정/EndOfLine/변경 -->
@@ -357,6 +380,7 @@ New text file line delimiter
 <!-- Eclipse       --><td class='red' >File >> Convert Line Delimiters To</td>
 <!-- Visual Studio --><td class='blue'>하단상태Bar에서 Click</td>
 <!-- Notepad++     --><td class='blue'>하단상태Bar에서 Right Click</td>
+<!-- IntelliJ      --><td class='blue'>하단상태Bar에서 Click</td>
 		</tr>
 
 <!-- File/열기/File Open -->
@@ -368,17 +392,20 @@ New text file line delimiter
 </td>
 <!-- Visual Studio --><td class='blue'>&lt;Ctrl> + O</td>
 <!-- Notepad++     --><td class='blue'>&lt;Ctrl> + O</td>
+<!-- IntelliJ      --><td></td>
 		</tr>
 
 <!-- File/열기/Folder Open -->
 		<tr><td class=title>上合</td><td>上合</td><td>Folder Open</td><td>左合</td>
-<!-- VS Code       --><td>&lt;Ctrl> + K , O</td>
+<!-- VS Code       --><td>&lt;Ctrl> + K , &lt;Ctrl> + O</td>
 <!-- Eclipse       --><td></td>
 <!-- Visual Studio --><td>
 &lt;Shift>+
 &lt;Ctrl> + &lt;Alt> + O</td>
 <!-- Notepad++     --><td>無</td>
+<!-- IntelliJ      --><td></td>
 		</tr>
+
 		<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
 <!-- VS Code       --><td>上合</td>
 <!-- Eclipse       --><td>上合</td>
@@ -387,6 +414,7 @@ New text file line delimiter
 매크로 >> 단축키 변경
 주메뉴 >> 작업영역으로 폴더 열기
 </td>
+<!-- IntelliJ      --><td>上合</td>
 		</tr>
 
 <!-- File/저장/Save -->
@@ -395,6 +423,7 @@ New text file line delimiter
 <!-- Eclipse       --><td class='blue'>&lt;Ctrl> + S</td>
 <!-- Visual Studio --><td class='blue'>&lt;Ctrl> + S</td>
 <!-- Notepad++     --><td class='blue'>&lt;Ctrl> + S</td>
+<!-- IntelliJ      --><td>無</td>
 		</tr>
 
 <!-- File/저장/Save As -->
@@ -403,11 +432,12 @@ New text file line delimiter
 <!-- Eclipse       --><td></td>
 <!-- Visual Studio --><td></td>
 <!-- Notepad++     --><td>&lt;Ctrl> + &lt;Alt> + S</td>
+<!-- IntelliJ      --><td></td>
 		</tr>
 
 <!-- File/저장/Save All -->
 		<tr><td class=title>上合</td><td>上合</td><td>Save All</td><td>左合</td>
-<!-- VS Code       --><td class='red' >&lt;Ctrl> + K , O</td>
+<!-- VS Code       --><td class='red' >&lt;Ctrl> + K , S</td>
 <!-- Eclipse       --><td class='blue'>
 &lt;Shift>+
 &lt;Ctrl> + S
@@ -420,6 +450,7 @@ New text file line delimiter
 &lt;Shift>+
 &lt;Ctrl> + S
 </td>
+<!-- IntelliJ      --><td class='red' >&lt;Ctrl> + S</td>
 		</tr>
 
 <!-- 창/창 닫기 -->
@@ -439,6 +470,10 @@ New text file line delimiter
 <span class='blue'>&lt;Ctrl> + W</span>
 &nbsp;
 </td>
+<!-- IntelliJ      --><td>
+&nbsp;
+&lt;Ctrl> + F4
+</td>
 		</tr>
 
 <!-- 창/모든창 닫기 -->
@@ -453,6 +488,10 @@ New text file line delimiter
 &lt;Shift>+
 &lt;Ctrl> + W
 </td>
+<!-- IntelliJ      --><td>
+　　　　　 &lt;Alt> + 닫기(Click)
+닫기(Click)
+</td>
 		</tr>
 
 <!-- 창/창 바꾸기 -->
@@ -461,7 +500,9 @@ New text file line delimiter
 <!-- Eclipse       --><td class='red' >&lt;Ctrl> + F6</td>
 <!-- Visual Studio --><td class='blue'>&lt;Ctrl> + Tab</td>
 <!-- Notepad++     --><td class='blue'>&lt;Ctrl> + Tab</td>
+<!-- IntelliJ      --><td class='blue'>&lt;Ctrl> + Tab</td>
 		</tr>
+
 		<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
 <!-- VS Code       --><td>上合</td>
 <!-- Eclipse       --><td>
@@ -474,15 +515,19 @@ Binding: &lt;Ctrl> + Tab
 </td>
 <!-- Visual Studio --><td>上合</td>
 <!-- Notepad++     --><td>上合</td>
+<!-- IntelliJ      --><td>上合</td>
 		</tr>
-		
+
 <!-- 커서/이동/앞으로 -->
 		<tr><td class=title>커서</td><td>이동</td><td>앞으로 ★</td><td>左合</td>
 <!-- VS Code       --><td>　　　　　 &lt;Alt> + ◀</td>
 <!-- Eclipse       --><td>　　　　　 &lt;Alt> + ◀</td>
 <!-- Visual Studio --><td>&lt;Ctrl> + '-'(Main)</td>
 <!-- Notepad++     --><td>無</td>
-<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
+<!-- IntelliJ      --><td>&lt;Ctrl> + &lt;Alt> + ◀</td>
+		</tr>
+
+		<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
 <!-- VS Code       --><td>上合</td>
 <!-- Eclipse       --><td>上合</td>
 <!-- Visual Studio --><td>上合</td>
@@ -491,6 +536,7 @@ Binding: &lt;Ctrl> + Tab
 Location Navigate 설치 후,
 &lt;Ctrl> + '-'
 </td>
+<!-- IntelliJ      --><td>上合</td>
 		</tr>
 
 <!-- 커서/이동/뒤로 -->
@@ -502,7 +548,9 @@ Location Navigate 설치 후,
 &lt;Ctrl> + '-'(Main)
 </td>
 <!-- Notepad++     --><td>無</td>
+<!-- IntelliJ      --><td>&lt;Ctrl> + &lt;Alt> + ▶</td>
 		</tr>
+
 		<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
 <!-- VS Code       --><td>上合</td>
 <!-- Eclipse       --><td>上合</td>
@@ -513,6 +561,7 @@ Location Navigate 설치 후,
 &lt;Shift>+
 &lt;Ctrl> + '-'
 </td>
+<!-- IntelliJ      --><td>上合</td>
 		</tr>
 
 <!-- 커서/이동/Goto Line -->
@@ -521,7 +570,9 @@ Location Navigate 설치 후,
 <!-- Eclipse       --><td class='red' >&lt;Ctrl> + L</td>
 <!-- Visual Studio --><td class='blue'>&lt;Ctrl> + G</td>
 <!-- Notepad++     --><td class='blue'>&lt;Ctrl> + G</td>
+<!-- IntelliJ      --><td class='blue'>&lt;Ctrl> + G</td>
 		</tr>
+
 		<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
 <!-- VS Code       --><td>上合</td>
 <!-- Eclipse       --><td>
@@ -534,6 +585,17 @@ Binding: &lt;Ctrl> + G
 </td>
 <!-- Visual Studio --><td>上合</td>
 <!-- Notepad++     --><td>上合</td>
+<!-- IntelliJ      --><td>上合</td>
+		</tr>
+
+<!-- 커서/이동/함수로 -->
+		<tr><td class=title>上合</td><td>上合</td><td>함수로</td><td>左合</td>
+<!-- VS Code       --><td></td>
+<!-- Eclipse       --><td></td>
+<!-- Visual Studio --><td></td>
+<!-- Notepad++     --><td></td>
+<!-- IntelliJ      --><td>
+&lt;Ctrl> + F12</td>
 		</tr>
 
 <!-- 커서/다중커서 -->
@@ -546,6 +608,7 @@ Binding: &lt;Ctrl> + G
 설정>>환경설정
 편집>>다중편집기능
 </td>
+<!-- IntelliJ      --><td></td>
 		</tr>
 
 <!-- Line/위로 이동-->
@@ -556,6 +619,10 @@ Binding: &lt;Ctrl> + G
 <!-- Notepad++     --><td>
 &lt;Shift>+
 &lt;Ctrl> + ▲
+</td>
+<!-- IntelliJ      --><td>
+&lt;Shift>+
+	 &lt;Alt> + ▲
 </td>
 		</tr>
 
@@ -568,30 +635,27 @@ Binding: &lt;Ctrl> + G
 &lt;Shift>+
 &lt;Ctrl> + ▼
 </td>
+<!-- IntelliJ      --><td>&lt;Shift>+
+	 &lt;Alt> + ▼
+</td>
 		</tr>
 
 <!-- Line/잘라내기 -->
 		<tr><td class=title>上合</td><td>잘라내기</td><td>左合</td><td>左合</td>
-<!-- VS Code       --><td>&lt;Ctrl> + X [No Selected]</td>
+<!-- VS Code       --><td class='blue'>&lt;Ctrl> + X [No Selected]</td>
 <!-- Eclipse       --><td></td>
-<!-- Visual Studio --><td>&lt;Ctrl> + X [No Selected]</td>
+<!-- Visual Studio --><td class='blue'>&lt;Ctrl> + X [No Selected]</td>
 <!-- Notepad++     --><td></td>
+<!-- IntelliJ      --><td class='blue'>&lt;Ctrl> + X [No Selected]</td>
 		</tr>
 
 <!-- Line/복사하기 -->
 		<tr><td class=title>上合</td><td>복사하기</td><td>左合</td><td>左合</td>
-<!-- VS Code       --><td>&lt;Ctrl> + C [No Selected]</td>
+<!-- VS Code       --><td class='blue'>&lt;Ctrl> + C [No Selected]</td>
 <!-- Eclipse       --><td></td>
-<!-- Visual Studio --><td>&lt;Ctrl> + C [No Selected]</td>
+<!-- Visual Studio --><td class='blue'>&lt;Ctrl> + C [No Selected]</td>
 <!-- Notepad++     --><td></td>
-		</tr>
-
-<!-- Line/붙여넣기 -->
-		<tr><td class=title>上合</td><td>붙여넣기</td><td>左合</td><td>左合</td>
-<!-- VS Code       --><td>&lt;Ctrl> + V [No Selected]</td>
-<!-- Eclipse       --><td></td>
-<!-- Visual Studio --><td>&lt;Ctrl> + V [No Selected]</td>
-<!-- Notepad++     --><td></td>
+<!-- IntelliJ      --><td class='blue'>&lt;Ctrl> + C [No Selected]</td>
 		</tr>
 
 <!-- Line/삭제하기 -->
@@ -600,6 +664,7 @@ Binding: &lt;Ctrl> + G
 <!-- Eclipse       --><td>&lt;Ctrl> + D</td>
 <!-- Visual Studio --><td class='red' >&lt;Ctrl> + L</td>
 <!-- Notepad++     --><td class='red' >&lt;Ctrl> + L</td>
+<!-- IntelliJ      --><td></td>
 		</tr>
 
 <!-- Line/복제하기 -->
@@ -608,6 +673,7 @@ Binding: &lt;Ctrl> + G
 <!-- Eclipse       --><td>&lt;Ctrl> + &lt;Alt> + ▲|▼</td>
 <!-- Visual Studio --><td></td>
 <!-- Notepad++     --><td>&lt;Ctrl> + D</td>
+<!-- IntelliJ      --><td>&lt;Ctrl> + D</td>
 		</tr>
 
 <!-- Text/찾기/현재창에서 -->
@@ -616,6 +682,7 @@ Binding: &lt;Ctrl> + G
 <!-- Eclipse       --><td class='blue'>&lt;Ctrl> + F</td>
 <!-- Visual Studio --><td class='blue'>&lt;Ctrl> + F</td>
 <!-- Notepad++     --><td class='blue'>&lt;Ctrl> + F</td>
+<!-- IntelliJ      --><td class='blue'>&lt;Ctrl> + F</td>
 		</tr>
 
 <!-- Text/찾기/다음찾기 -->
@@ -636,6 +703,10 @@ ESC, F3 ... F3
 <span class='blue'>Enter ... Enter, ESC</span>
 ESC, F3 ... F3
 </td>
+<!-- IntelliJ      --><td>
+<span class='blue'>Enter ... Enter, ESC</span>
+F3 ... F3, ESC
+</td>
 		</tr>
 
 <!-- Text/찾기/파일에서 -->
@@ -653,6 +724,10 @@ ESC, F3 ... F3
 &lt;Shift>+
 &lt;Ctrl> + F
 </td>
+<!-- IntelliJ      --><td class='blue'>
+&lt;Shift>+
+&lt;Ctrl> + F
+</td>
 		</tr>
 
 <!-- Text/바꾸기/현재창에서 -->
@@ -661,6 +736,7 @@ ESC, F3 ... F3
 <!-- Eclipse       --><td class=''   >無</td>
 <!-- Visual Studio --><td class='blue'>&lt;Ctrl> + H</td>
 <!-- Notepad++     --><td class='blue'>&lt;Ctrl> + H</td>
+<!-- IntelliJ      --><td>&lt;Ctrl> + R</td>
 		</tr>
 
 <!-- Text/바꾸기/파일에서 -->
@@ -673,6 +749,9 @@ ESC, F3 ... F3
 &lt;Shift>+
 &lt;Ctrl> + H</td>
 <!-- Notepad++     --><td>無</td>
+<!-- IntelliJ      --><td>
+&lt;Shift>+
+&lt;Ctrl> + R</td>
 		</tr>
 
 <!-- 함수/정의로 이동-->
@@ -687,16 +766,20 @@ F12
 <span class='red'>&lt;Ctrl> + Click</span>
 </td>
 <!-- Notepad++     --><td>無</td>
+<!-- IntelliJ      --><td>
+<span class='red'>&lt;Ctrl> + Click</span>
+</td>
 		</tr>
 
 <!-- 함수/참조들 찾기-->
 		<tr><td class=title>上合</td><td>참조들 찾기</td><td>左合</td><td>左合</td>
 <!-- VS Code       --><td>
 &lt;Shift>+
-       &lt;Alt> + F12</td>
+	   &lt;Alt> + F12</td>
 <!-- Eclipse       --><td>&lt;Ctrl> + &lt;Alt> + H</td>
 <!-- Visual Studio --><td>無</td>
 <!-- Notepad++     --><td>無</td>
+<!-- IntelliJ      --><td></td>
 		</tr>
 
 <!-- 블럭/접기-->
@@ -708,6 +791,7 @@ F12
 <!-- Eclipse       --><td>&lt;Ctrl> + '-'(Num)</td>
 <!-- Visual Studio --><td>&lt;Ctrl> + M, M</td>
 <!-- Notepad++     --><td>&lt;Ctrl> + &lt;Alt> + F</td>
+<!-- IntelliJ      --><td>&lt;Ctrl> + '-'</td>
 		</tr>
 
 <!-- 블럭/펼치기-->
@@ -722,6 +806,7 @@ F12
 <span class='blue'>&lt;Shift>+</span>
 &lt;Ctrl> + &lt;Alt> + F
 </td>
+<!-- IntelliJ      --><td>&lt;Ctrl> + '+'</td>
 		</tr>
 
 <!-- 블럭/모두 접기-->
@@ -730,6 +815,10 @@ F12
 <!-- Eclipse       --><td></td>
 <!-- Visual Studio --><td>&lt;Ctrl> + M, L</td>
 <!-- Notepad++     --><td>&lt;Alt> + '0'(Main)</td>
+<!-- IntelliJ      --><td>
+&lt;Shift>+
+&lt;Ctrl> + '-'
+</td>
 		</tr>
 
 <!-- 블럭/모두 펼치기-->
@@ -739,7 +828,11 @@ F12
 <!-- Visual Studio --><td>&lt;Ctrl> + M, L</td>
 <!-- Notepad++     --><td>
 &lt;Shift>+
-       &lt;Alt>+'0'(Main)
+	   &lt;Alt>+'0'(Main)
+</td>
+<!-- IntelliJ      --><td>
+&lt;Shift>+
+&lt;Ctrl> + '+'
 </td>
 		</tr>
 
@@ -749,6 +842,7 @@ F12
 <!-- Eclipse       --><td>&lt;Ctrl> + '/'(Num)</td>
 <!-- Visual Studio --><td></td>
 <!-- Notepad++     --><td></td>
+<!-- IntelliJ      --><td></td>
 		</tr>
 
 <!-- 블럭/접기방지-->
@@ -757,21 +851,26 @@ F12
 <!-- Eclipse       --><td></td>
 <!-- Visual Studio --><td>&lt;Ctrl> + M, P</td>
 <!-- Notepad++     --><td></td>
+<!-- IntelliJ      --><td></td>
 		</tr>
 
 <!-- 선택/열모드/시작 -->
 		<tr><td class=title>선택</td><td>열모드</td><td>시작 ★</td><td>左合</td>
 <!-- VS Code       --><td>&lt;Ctrl> + &lt;Alt> + ▲|▼</td>
-<!-- Eclipse       --><td class='blue'>&lt;Shift>+
-       &lt;Alt> + A
+<!-- Eclipse       --><td class='red'>&lt;Shift>+
+	   &lt;Alt> + A
 </td>
 <!-- Visual Studio --><td>
 &lt;Shift>+
-       &lt;Alt> +  ▲|▼
+	   &lt;Alt> + ▲|▼
 </td>
 <!-- Notepad++     --><td>
 &lt;Shift>+
-       &lt;Alt> +  ▲|▼
+	   &lt;Alt> + ▲|▼
+</td>
+<!-- IntelliJ      --><td class='red'>
+&lt;Shift>+
+	   &lt;Alt> + Insert
 </td>
 		</tr>
 
@@ -785,35 +884,42 @@ F12
 </td>
 <!-- Visual Studio --><td>
 &lt;Shift>+
-       &lt;Alt> +  ▲|▼
+	   &lt;Alt> + ▲|▼
 </td>
 <!-- Notepad++     --><td>
 &lt;Shift>+
-       &lt;Alt> +  ▲|▼
+	   &lt;Alt> + ▲|▼
 </td>
-	<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
+<!-- IntelliJ      --><td>
+&lt;Shift> + ▲|▼
+</td>
+		</tr>
+		<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
 <!-- VS Code       --><td>
 <span class=blue>　　　　 &lt;Alt> + Drag</span>
 </td>
-<!-- Eclipse       --><td>
-Drag
-</td>
+<!-- Eclipse       --><td>Drag</td>
 <!-- Visual Studio --><td>
-<span class=blue>　　　　&lt;Alt> + Drag</span>
+<span class=blue>　　　　&lt;Alt> + Drag(시작+선택+해제)</span>
 </td>
 <!-- Notepad++     --><td>
-<span class=blue>　　　　&lt;Alt> + Drag</span>
+<span class=blue>　　　　&lt;Alt> + Drag(시작+선택+해제)</span>
 </td>
+<!-- IntelliJ      --><td>Drag(시작+선택+해제)</td>
 		</tr>
 
-<!-- 선택/열모드/헤제 -->
+<!-- 선택/열모드/해제 -->
 		<tr><td class=title>上合</td><td>上合</td><td>해제 ★</td><td>左合</td>
-<!-- VS Code       --><td>ESC</td>
-<!-- Eclipse       --><td class=blue>
+<!-- VS Code       --><td class='blue'>ESC</td>
+<!-- Eclipse       --><td class='red' >
 &lt;Shift>+
-       &lt;Alt> + A</td>
-<!-- Visual Studio --><td>ESC</td>
+	   &lt;Alt> + A</td>
+<!-- Visual Studio --><td class='blue'>ESC</td>
 <!-- Notepad++     --><td>▲|▼|◀|▶</td>
+<!-- IntelliJ      --><!-- IntelliJ      --><td class='red'>
+&lt;Shift>+
+	   &lt;Alt> + Insert
+</td>
 		</tr>
 
 <!-- 선택/Box/시작 -->
@@ -822,16 +928,20 @@ Drag
 &lt;Shift>+	
 &lt;Ctrl> + &lt;Alt> + ▲|▼|◀|▶
 </td>
-<!-- Eclipse       --><td class='blue'>&lt;Shift>+
-       &lt;Alt> + A
+<!-- Eclipse       --><td class='red'>&lt;Shift>+
+	   &lt;Alt> + A
 </td>
 <!-- Visual Studio --><td>
 &lt;Shift>+
-       &lt;Alt> + ▲|▼|◀|▶
+	   &lt;Alt> + ▲|▼|◀|▶
 </td>
 <!-- Notepad++     --><td>
 &lt;Shift>+
-       &lt;Alt> + ▲|▼|◀|▶
+	   &lt;Alt> + ▲|▼|◀|▶
+</td>
+<!-- IntelliJ      --><td class='red'>
+&lt;Shift>+
+	   &lt;Alt> + Insert
 </td>
 		</tr>
 
@@ -846,56 +956,74 @@ Drag
 </td>
 <!-- Visual Studio --><td>
 &lt;Shift>+
-       &lt;Alt> + ▲|▼|◀|▶
+	   &lt;Alt> + ▲|▼|◀|▶
 </td>
 <!-- Notepad++     --><td>
 &lt;Shift>+
-       &lt;Alt> + ▲|▼|◀|▶
+	   &lt;Alt> + ▲|▼|◀|▶
+</td>
+<!-- IntelliJ      --><td>
+&lt;Shift> + ▲|▼|◀|▶
 </td>
 		</tr>
+
 		<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
 <!-- VS Code       --><td>
 <span class=blue>　　　　&lt;Alt> + Drag</span>
 </td>
-<!-- Eclipse       --><td>
-Drag
-</td>
+<!-- Eclipse       --><td>Drag</td>
 <!-- Visual Studio --><td>
-<span class=blue>　　　　&lt;Alt> + Drag</span>
+<span class=blue>　　　　&lt;Alt> + Drag(시작+선택+해제)</span>
 </td>
 <!-- Notepad++     --><td>
-<span class=blue>　　　　&lt;Alt> + Drag</span>
+<span class=blue>　　　　&lt;Alt> + Drag(시작+선택+해제)</span>
 </td>
+<!-- IntelliJ      --><td>Drag(시작+선택+해제)</td>
 		</tr>
 
 <!-- 선택/Box/해제 -->
 		<tr><td class=title>上合</td><td>上合</td><td>해제</td><td>左合</td>
 <!-- VS Code       --><td>ESC</td>
-<!-- Eclipse       --><td class='blue'>&lt;Shift>+
-       &lt;Alt> + A
+<!-- Eclipse       --><td class='red'>&lt;Shift>+
+	   &lt;Alt> + A
 </td>
 <!-- Visual Studio --><td>ESC</td>
 <!-- Notepad++     --><td>▲|▼|◀|▶</td>
+<!-- IntelliJ      --><td class='red'>
+&lt;Shift>+
+	   &lt;Alt> + Insert
+</td>
 		</tr>
 
 <!-- 선택/한줄(Line) -->
-		<tr><td class=title>上合</td><td>한줄(Line)</td><td>左合</td><td>左合</td>
+		<tr><td class=title>上合</td><td>Line</td><td>한줄</td><td>左合</td>
 <!-- VS Code       --><td class='red' >&lt;Ctrl> + L</td>
 <!-- Eclipse       --><td></td>
 <!-- Visual Studio --><td></td>
 <!-- Notepad++     --><td></td>
+<!-- IntelliJ      --><td></td>
 		</tr>
 
 <!-- 선택/여러줄(Lines) -->
-		<tr><td class=title>上合</td><td>여러줄(Lines) ★</td><td>左合</td><td>左合</td>
+		<tr><td class=title>上合</td><td>上合</td><td>여러줄 ★★</td><td>左合</td>
 <!-- VS Code       --><td class='blue'>Home, &lt;Shfit> + ▲|▼</td>
 <!-- Eclipse       --><td class='blue'>Home, &lt;Shfit> + ▲|▼</td>
 <!-- Visual Studio --><td class='blue'>Home, &lt;Shfit> + ▲|▼</td>
 <!-- Notepad++     --><td class='blue'>Home, &lt;Shfit> + ▲|▼</td>
+<!-- IntelliJ      --><td class='blue'>Home, &lt;Shfit> + ▲|▼</td>
+		</tr>
+
+<!-- 선택/모든줄(All Lines) -->
+		<tr><td class=title>上合</td><td>上合</td><td>모든줄</td><td>左合</td>
+<!-- VS Code       --><td class='blue'>&lt;Ctrl> + A</td>
+<!-- Eclipse       --><td class='blue'>&lt;Ctrl> + A</td>
+<!-- Visual Studio --><td class='blue'>&lt;Ctrl> + A</td>
+<!-- Notepad++     --><td class='blue'>&lt;Ctrl> + A</td>
+<!-- IntelliJ      --><td class='blue'>&lt;Ctrl> + A</td>
 		</tr>
 
 <!-- 선택/변수 다중선택 -->
-<tr><td class=title>上合</td><td>변수 다중선택 ★</td><td>左合</td><td>左合</td>
+		<tr><td class=title>上合</td><td>변수 다중선택 ★</td><td>左合</td><td>左合</td>
 <!-- VS Code       --><td>
 변수 Click (변경할 제일 위 변수),
 <span class='red' >ESC</span> (정확히 일치하는 것만),
@@ -905,17 +1033,20 @@ Drag
 <!-- Eclipse       --><td>
 변수 Click,
 <span class='blue'>&lt;Shift>+
-       &lt;Alt> +  R</span>
+	   &lt;Alt> +  R</span>
 &nbsp;
 </td>
 <!-- Visual Studio --><td>
 변수 Click,
 <span class='blue'>&lt;Ctrl> + R, R</span> (모두 변경)
 &lt;Shift>+
-       &lt;Alt> + '>'...'>' (하나씩 선택)
+	   &lt;Alt> + '>'...'>' (하나씩 선택)
 </td>
 <!-- Notepad++     --><td></td>
-	<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
+<!-- IntelliJ      --><td></td>
+		</tr>
+
+		<tr><td class=title>上合</td><td>上合</td><td>上合</td><td>上合</td>
 <!-- VS Code       --><td>
 <span class='blue'>▲|▼|◀|▶</span> (변경할 제일 위 변수),
 <span class='blue'>&lt;Ctrl> + F2</span> (모두 선택)
@@ -925,15 +1056,16 @@ Drag
 <span class='blue'>▲|▼|◀|▶</span>,
 <span class='blue'>
 &lt;Shift>+
-       &lt;Alt> +  R</span>
+	   &lt;Alt> +  R</span>
 </td>
 <!-- Visual Studio --><td>
 <span class='blue'>▲|▼|◀|▶</span>,
 <span class='blue'>&lt;Ctrl> + R, R</span> (모두 변경)
 &lt;Shift>+
-       &lt;Alt> + '>'...'>' (하나씩 선택)
+	   &lt;Alt> + '>'...'>' (하나씩 선택)
 </td>
 <!-- Notepad++     --><td>上合</td>
+<!-- IntelliJ      --><td></td>
 		</tr>
 
 <!-- 주석/줄(Line)/주석 -->
@@ -951,7 +1083,11 @@ Drag
 &lt;Ctrl> + K, C
 </td>
 <!-- Notepad++     --><td class=blue>
+&nbsp;
 &lt;Ctrl> + Q
+</td>
+<!-- IntelliJ      --><td class=blue>
+&lt;Ctrl> + '/'
 &nbsp;
 </td>
 		</tr>
@@ -971,7 +1107,11 @@ Drag
 &lt;Ctrl> + K, U
 </td>
 <!-- Notepad++     --><td class=blue>
+&nbsp;
 &lt;Ctrl> + Q
+</td>
+<!-- IntelliJ      --><td class=blue>
+&lt;Ctrl> + '/'
 &nbsp;
 </td>
 		</tr>
@@ -982,6 +1122,7 @@ Drag
 <!-- Eclipse       --><td></td>
 <!-- Visual Studio --><td></td>
 <!-- Notepad++     --><td></td>
+<!-- IntelliJ      --><td></td>
 		</tr>
 
 <!-- 기타/Font크기 -->
@@ -1006,6 +1147,10 @@ Drag
 &nbsp;
 &nbsp;
 </td>
+<!-- IntelliJ      --><td>
+&nbsp;
+&lt;Shift>+
+	  &lt;Alt> + '<'|'>'</td>
 		</tr>
 
 <!-- 기타/Full Screen -->
@@ -1014,8 +1159,11 @@ Drag
 <!-- Eclipse       --><td>無</td>
 <!-- Visual Studio --><td>
 &lt;Shift>+
-       &lt;Alt> +  Enter</td>
+	  &lt;Alt> + Enter</td>
 <!-- Notepad++     --><td>F11</td>
+<!-- IntelliJ      --><td>
+Shift,Shift후 full검색
+</td>
 		</tr>
 
 <!-- 기타/Terminal(console) -->
@@ -1030,6 +1178,9 @@ Drag
 플러그인 >> 플러그인 관리...
 NppExec 설치 후
 &lt;Ctrl> + '`'
+</td>
+<!-- IntelliJ      --><td>
+	  &lt;Alt> + F12
 </td>
 		</tr>
 
